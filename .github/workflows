@@ -1,0 +1,39 @@
+name: Deploy CFN
+on:
+  push:
+    branches: [ "dev", "main" ]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select role
+        id: role
+        run: |
+          if [ "${GITHUB_REF_NAME}" = "main" ]; then
+            echo "ROLE_ARN=${{ vars.PROD_PIPELINE_ROLE_ARN }}" >> $GITHUB_OUTPUT
+            echo "STACK=portfolio-prod" >> $GITHUB_OUTPUT
+            echo "CFN_ROLE_ARN=${{ vars.PROD_CFN_SERVICE_ROLE_ARN }}" >> $GITHUB_OUTPUT
+          elif [ "${GITHUB_REF_NAME}" = "dev" ]; then
+            echo "ROLE_ARN=${{ vars.DEV_PIPELINE_ROLE_ARN }}" >> $GITHUB_OUTPUT
+            echo "STACK=portfolio-dev" >> $GITHUB_OUTPUT
+            echo "CFN_ROLE_ARN=${{ vars.DEV_CFN_SERVICE_ROLE_ARN }}" >> $GITHUB_OUTPUT
+          fi
+
+      - uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ steps.role.outputs.ROLE_ARN }}
+          aws-region: eu-central-1
+
+      - name: Deploy stack (with CFN service role)
+        run: |
+          aws cloudformation deploy \
+            --stack-name ${{ steps.role.outputs.STACK }} \
+            --template-file cloud_infrastructure/portfolio-cfn.yaml \
+            --role-arn ${{ steps.role.outputs.CFN_ROLE_ARN }}
