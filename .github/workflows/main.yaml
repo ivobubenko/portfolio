@@ -2,7 +2,9 @@ name: Deploy CFN
 on:
   push:
     branches: [ "dev", "main" ]
-
+env:
+  AWS_REGION: eu-central-1
+  
 permissions:
   id-token: write
   contents: read
