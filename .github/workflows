@@ -8,32 +8,86 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
+  changes:
+    name: Detect changes
     runs-on: ubuntu-latest
+    outputs:
+      infra: ${{ steps.filter.outputs.infra }}
+      app: ${{ steps.filter.outputs.app }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Select role
-        id: role
-        run: |
-          if [ "${GITHUB_REF_NAME}" = "main" ]; then
-            echo "ROLE_ARN=${{ vars.PROD_PIPELINE_ROLE_ARN }}" >> $GITHUB_OUTPUT
-            echo "STACK=portfolio-prod" >> $GITHUB_OUTPUT
-            echo "CFN_ROLE_ARN=${{ vars.PROD_CFN_SERVICE_ROLE_ARN }}" >> $GITHUB_OUTPUT
-          elif [ "${GITHUB_REF_NAME}" = "dev" ]; then
-            echo "ROLE_ARN=${{ vars.DEV_PIPELINE_ROLE_ARN }}" >> $GITHUB_OUTPUT
-            echo "STACK=portfolio-dev" >> $GITHUB_OUTPUT
-            echo "CFN_ROLE_ARN=${{ vars.DEV_CFN_SERVICE_ROLE_ARN }}" >> $GITHUB_OUTPUT
-          fi
-
-      - uses: aws-actions/configure-aws-credentials@v5
+      - name: Path filter
+        uses: dorny/paths-filter@v3
+        id: filter
         with:
-          role-to-assume: ${{ steps.role.outputs.ROLE_ARN }}
-          aws-region: eu-central-1
+          base: ${{ github.ref }}
+          predicate-quantifier: every
+          filters: |
+            infra:
+              - 'cloud_infrastructure/**'
+            app:
+              - '**'
+              - '!cloud_infrastructure/**'
 
-      - name: Deploy stack (with CFN service role)
+  deploy_infra:
+    name: Deploy infrastructure (CloudFormation)
+    needs: changes
+    if: ${{ needs.changes.outputs.infra == 'true' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref_name == 'main' || 'dev' }}
+    concurrency:
+      group: infra-${{ github.ref_name }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC) - INFRA role
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.INFRA_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Deploy CFN stack
         run: |
           aws cloudformation deploy \
-            --stack-name ${{ steps.role.outputs.STACK }} \
-            --template-file cloud_infrastructure/portfolio-cfn.yaml \
-            --role-arn ${{ steps.role.outputs.CFN_ROLE_ARN }}
+            --stack-name "${{ vars.STACK_NAME }}" \
+            --template-file cloud_infrastructure/site.yaml \
+            --role-arn "${{ vars.CFN_SERVICE_ROLE_ARN }}" \
+            --no-fail-on-empty-changeset
+
+  deploy_app:
+    name: Deploy site (S3) + invalidate CloudFront
+    needs: changes
+
+    if: ${{ needs.changes.outputs.infra != 'true' && needs.changes.outputs.app == 'true' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref_name == 'main' || 'dev' }}
+    concurrency:
+      group: app-${{ github.ref_name }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC) - APP role
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.APP_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Upload to S3
+        run: |
+          aws s3 sync ./dist "s3://${{ vars.SITE_BUCKET }}/" --delete
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.CF_DISTRIBUTION_ID }}" \
+            --paths "/*"
