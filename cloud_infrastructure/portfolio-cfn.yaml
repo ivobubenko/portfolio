@@ -4,7 +4,6 @@ Description: Static portfolio on S3 (private) + CloudFront (OAC)
 Resources:
   PortfolioBucket:
     Type: AWS::S3::Bucket
-    DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
     Properties:
       OwnershipControls:
