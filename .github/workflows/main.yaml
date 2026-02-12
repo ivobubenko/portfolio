@@ -55,6 +55,7 @@ jobs:
           aws cloudformation deploy \
             --stack-name "${{ vars.STACK_NAME }}" \
             --template-file cloud_infrastructure/portfolio-cfn.yaml \
+            --role-arn "${{ vars.INFRA_ROLE_ARN }}" \
             --no-fail-on-empty-changeset
 
   deploy_app:
