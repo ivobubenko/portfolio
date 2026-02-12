@@ -105,4 +105,3 @@ Outputs:
     Value: !Ref PortfolioDistribution
   DistributionDomainName:
     Value: !GetAtt PortfolioDistribution.DomainName
-
