@@ -58,7 +58,7 @@ jobs:
             --role-arn "${{ vars.CFN_ROLE }}" \
             --parameter-overrides \
               DomainName="${{ vars.DOMAIN_NAME }}" \
-              CertificateArn="${{ env.ACM_ARN }}" \
+              CertificateArn="${{ secrets.ACM_ARN }}" \
             --no-fail-on-empty-changeset
 
   deploy_app:
