@@ -1,0 +1,195 @@
+{
+  "brand": {
+    "desktopTitle": "IVO BUBEŇKO",
+    "mobileTitle": "IVO",
+    "copyrightName": "Ivo Bubeňko, Bc."
+  },
+  "nav": {
+    "about": "O mne",
+    "experience": "Skúsenosti",
+    "projects": "Projekty",
+    "skills": "Zručnosti",
+    "education": "Vzdelanie",
+    "contact": "Kontakt"
+  },
+  "profile": {
+    "name": "Ivo Bubeňko, Bc.",
+    "role": "Software developer so zameraním na AWS, web development, CI/CD a bezpečné digitálne systémy",
+    "location": "Slovensko / Košický región",
+    "summary": "Študent posledného ročníka informatiky na FEI TUKE a full-time Junior SAP ABAP Developer, ktorý prepája enterprise vývoj s praktickou prácou v AWS, CI/CD, serverless backende a frontend projektoch."
+  },
+  "heroCtas": {
+    "projects": "Zobraziť projekty",
+    "experience": "Pozrieť skúsenosti",
+    "contact": "Kontaktovať ma"
+  },
+  "projectCtas": {
+    "demo": "Otvoriť demo",
+    "details": "Zobraziť projekt"
+  },
+  "sections": {
+    "about": "O mne",
+    "experience": "Skúsenosti",
+    "projects": "Vybraný projekt",
+    "skills": "Zručnosti",
+    "education": "Vzdelanie",
+    "languages": "Jazyky",
+    "contact": "Kontakt"
+  },
+  "about": {
+    "paragraphs": [
+      "Som študent posledného ročníka informatiky na Fakulte elektrotechniky a informatiky Technickej univerzity v Košiciach. Pracujem full-time ako Junior SAP ABAP Developer a zároveň zostávam prakticky aktívny v moderných webových a cloudových technológiách cez projekty, kontinuálne vzdelávanie a reálnu vývojársku prax.",
+      "Môj profil spája enterprise software development s praktickou prácou v AWS, CI/CD, serverless aplikáciách a frontend vývoji. Zameriavam sa na spoľahlivý softvér, automatizované deploymenty a bezpečné digitálne systémy vrátane overiteľných QR workflow založených na digitálnych podpisoch."
+    ],
+    "focusAreas": [
+      "SAP ABAP vývoj",
+      "debugging a root-cause analysis",
+      "vývoj testovacích služieb",
+      "optimalizácia procesov",
+      "AWS cloud development",
+      "serverless aplikácie",
+      "frontend development",
+      "CI/CD automatizácia",
+      "bezpečné overovanie QR kódov a digitálne podpisy"
+    ]
+  },
+  "projects": [
+    {
+      "title": "AsphalesQR - zabezpečenie integrity QR kódov",
+      "description": "Diplomový projekt zameraný na overovanie integrity a autenticity obsahu QR kódov pomocou digitálnych podpisov.",
+      "outcome": "Projekt skúma overiteľné QR kódy, browser-based verifikáciu, bezpečné workflow skenovania a praktické nasadenie kontroly autenticity QR obsahu.",
+      "tech": [
+        "integrita QR kódov",
+        "digitálne podpisy",
+        "browser verification",
+        "bezpečné skenovanie",
+        "web demo"
+      ],
+      "link": "https://asphalesqr.com"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Junior SAP ABAP Developer",
+      "company": "Accenture, Košice",
+      "period": "apríl 2024 - máj 2026",
+      "details": [
+        "Vyvíjal a udržiaval testovacie služby podľa špecifikácií od testerov.",
+        "Pracoval na zlepšovaní funkčnej a výkonovej spoľahlivosti softvéru.",
+        "Analyzoval a debugoval softvérové chyby, identifikoval ich príčiny a navrhoval optimalizované riešenia.",
+        "Prispieval k vývoju a optimalizácii procesov so zameraním na efektivitu, škálovateľnosť a integráciu do existujúcich systémov."
+      ]
+    },
+    {
+      "role": "Frontend Developer",
+      "company": "ClinBi",
+      "period": "august 2025 - december 2025",
+      "technologies": [
+        "Svelte",
+        "Node.js",
+        "AWS S3",
+        "CloudFront",
+        "Lambda",
+        "SAM",
+        "RDS",
+        "GitLab CI/CD",
+        "AWS CLI"
+      ],
+      "details": [
+        "Implementoval GitLab CI/CD deployment pipeline pre Svelte frontend naprieč viacerými development prostrediami.",
+        "Použil samostatné S3 buckety a CloudFront distribúcie pre každé prostredie, aby boli releasy izolované a opakovateľné.",
+        "Automatizoval CloudFront cache invalidation cez AWS CLI, aby používatelia po deploymente dostávali aktuálne frontend assety.",
+        "Vyvíjal a udržiaval Svelte frontend funkcionalitu podľa meniacich sa požiadaviek.",
+        "Prispieval do AWS SAM serverless backendu v Node.js, upravoval Lambda handlery integrované s Amazon RDS a implementoval samostatnú autorizačnú Lambdu."
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": "Programovacie jazyky",
+      "items": ["Java", "JavaScript", "SAP ABAP"]
+    },
+    {
+      "title": "Cloud & AWS",
+      "items": [
+        "AWS S3",
+        "Amazon CloudFront",
+        "AWS Lambda",
+        "AWS SAM",
+        "Amazon RDS",
+        "AWS CLI"
+      ]
+    },
+    {
+      "title": "Frontend",
+      "items": ["Svelte", "React", "Tailwind CSS"]
+    },
+    {
+      "title": "Backend / Runtime",
+      "items": ["Node.js", "Middy"]
+    },
+    {
+      "title": "CI/CD & Tooling",
+      "items": ["GitLab CI/CD", "GitHub"]
+    },
+    {
+      "title": "Software engineering",
+      "items": [
+        "debugging",
+        "root-cause analysis",
+        "vývoj testovacích služieb",
+        "optimalizácia procesov",
+        "deployment automation",
+        "serverless development"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Technická univerzita v Košiciach - Fakulta elektrotechniky a informatiky",
+      "program": "Informatika, bakalárske štúdium",
+      "period": "september 2021 - jún 2024",
+      "details": ["Študentský člen Akademického senátu FEI TUKE"]
+    },
+    {
+      "school": "Technická univerzita v Košiciach - Fakulta elektrotechniky a informatiky",
+      "program": "Informatika, inžinierske štúdium",
+      "period": "september 2024 - súčasnosť",
+      "details": [
+        "Študent posledného ročníka informatiky",
+        "Diplomová práca: Securing QR Code Integrity",
+        "Zameranie práce: overiteľné QR kódy, digitálne podpisy, overovanie integrity a autenticity QR obsahu"
+      ]
+    }
+  ],
+  "languages": [
+    "Angličtina - vyššia stredne pokročilá úroveň, B2",
+    "Nemčina - začiatočník, A1"
+  ],
+  "contact": {
+    "text": "Som otvorený software development pozíciám a praktickým projektom v oblastiach AWS, CI/CD, bezpečných webových aplikácií a enterprise vývoja.",
+    "links": [
+      {
+        "title": "Kontakt",
+        "variant": "contained",
+        "link": "mailto:ivo.bub@gmail.com",
+        "rel": " "
+      },
+      {
+        "title": "GitHub",
+        "link": "https://github.com/ivobubenko"
+      },
+      {
+        "title": "LinkedIn",
+        "link": "https://www.linkedin.com/in/ivo-bubenko-07788529a/"
+      },
+      {
+        "title": "AsphalesQR demo",
+        "link": "https://asphalesqr.com"
+      }
+    ]
+  },
+  "footer": {
+    "builtWith": "Postavené na React, TypeScript a Material UI."
+  }
+}

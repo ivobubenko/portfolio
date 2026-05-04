@@ -1,6 +1,15 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Static portfolio on S3 (private) + CloudFront (OAC)
 
+Parameters:
+  DomainName:
+    Type: String
+    Description: Custom domain name for CloudFront
+
+  CertificateArn:
+    Type: String
+    Description: ACM certificate ARN for CloudFront
+
 Resources:
   PortfolioBucket:
     Type: AWS::S3::Bucket
@@ -33,10 +42,17 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
+        Aliases:
+          - !Ref DomainName
+        ViewerCertificate:
+          AcmCertificateArn: !Ref CertificateArn
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2021
         Enabled: true
         Comment: Portfolio distribution
         DefaultRootObject: index.html
         PriceClass: PriceClass_200
+
 
         Origins:
           - Id: S3Origin
@@ -61,8 +77,6 @@ Resources:
             ResponseCode: 200
             ResponsePagePath: /index.html
 
-        ViewerCertificate:
-          CloudFrontDefaultCertificate: true
 
   PortfolioBucketPolicy:
     Type: AWS::S3::BucketPolicy

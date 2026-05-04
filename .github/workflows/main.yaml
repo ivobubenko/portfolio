@@ -56,6 +56,9 @@ jobs:
             --stack-name "${{ vars.STACK_NAME }}" \
             --template-file cloud_infrastructure/portfolio-cfn.yaml \
             --role-arn "${{ vars.CFN_ROLE }}" \
+            --parameter-overrides \
+              DomainName="${{ vars.DOMAIN_NAME }}" \
+              CertificateArn="${{ secrets.ACM_ARN }}" \
             --no-fail-on-empty-changeset
 
   deploy_app:
