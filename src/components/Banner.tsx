@@ -7,9 +7,14 @@ interface profileInterface {
         location: string,
         summary:
         string,
+    },
+    ctas: {
+        projects: string,
+        experience: string,
+        contact: string,
     }
 };
-function Banner({ profile }: profileInterface) {
+function Banner({ profile, ctas }: profileInterface) {
     return (
         <Box
             id="home"
@@ -34,10 +39,13 @@ function Banner({ profile }: profileInterface) {
                     </Typography>
                     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
                         <Button variant="contained" color="warning" href="#projects">
-                            View Projects
+                            {ctas.projects}
+                        </Button>
+                        <Button variant="outlined" sx={{ color: '#fff', borderColor: '#fff' }} href="#experience">
+                            {ctas.experience}
                         </Button>
                         <Button variant="outlined" sx={{ color: '#fff', borderColor: '#fff' }} href="#contact">
-                            Contact Me
+                            {ctas.contact}
                         </Button>
                     </Stack>
                 </Stack>

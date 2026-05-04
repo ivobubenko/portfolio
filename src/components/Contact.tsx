@@ -1,19 +1,21 @@
 import { Box, Typography, Stack, Button, Paper } from "@mui/material"
+import type { ButtonProps } from "@mui/material/Button";
+import type { ElementType } from "react";
 
 interface ContactInfo {
     title: string,
-    variant?: any,
+    variant?: ButtonProps["variant"],
     link: string,
     target?: string,
     rel?: string
 
 };
 interface ContactPropsInterface {
-    title: String,
-    text: String,
-    boxId: String,
+    title: string,
+    text: string,
+    boxId: string,
     contacts: Array<ContactInfo>,
-    boxComponent?: any,
+    boxComponent?: ElementType,
 };
 
 function Contact({ title, text, contacts, boxId, boxComponent = "section" }: ContactPropsInterface) {
@@ -27,7 +29,7 @@ function Contact({ title, text, contacts, boxId, boxComponent = "section" }: Con
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
                 {contacts.map((contact: ContactInfo) => {
-                    return <Button target={contact?.target ?? "_blank"} href={contact.link} variant={contact?.variant ?? "outlined"} rel={contact?.rel ?? "noreferrer"}>
+                    return <Button key={`${contact.title}-${contact.link}`} target={contact?.target ?? "_blank"} href={contact.link} variant={contact?.variant ?? "outlined"} rel={contact?.rel ?? "noreferrer"}>
                         {contact.title}
                     </Button>
                 })
@@ -37,16 +39,4 @@ function Contact({ title, text, contacts, boxId, boxComponent = "section" }: Con
     </Box >)
 }
 
-/*
-
-                    <Button variant="contained" href="mailto:ivo.bubenko@example.com">}}
-                    ivo.bubenko@example.com
-                </Button>
-                <Button variant="outlined" href="https://github.com" target="_blank" rel="noreferrer">
-                    GitHub
-                </Button>
-                <Button variant="outlined" href="https://linkedin.com" target="_blank" rel="noreferrer">
-                    LinkedIn
-                </Button>
-                */
 export default Contact

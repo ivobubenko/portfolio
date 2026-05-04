@@ -9,17 +9,40 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import LanguageBtn from '../components/LanguageBtn';
+import type { Language } from '../i18n/portfolio';
 
-const pages = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
-];
+type NavbarLabels = {
+  about: string;
+  experience: string;
+  projects: string;
+  skills: string;
+  education: string;
+  contact: string;
+};
 
-function Navbar({ title }: { title: string }) {
+function Navbar({
+  title,
+  mobileTitle,
+  labels,
+  language,
+  onLanguageChange,
+}: {
+  title: string;
+  mobileTitle: string;
+  labels: NavbarLabels;
+  language: Language;
+  onLanguageChange: (language: Language) => void;
+}) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const pages = [
+    { label: labels.about, href: '#about' },
+    { label: labels.experience, href: '#experience' },
+    { label: labels.projects, href: '#projects' },
+    { label: labels.skills, href: '#skills' },
+    { label: labels.education, href: '#education' },
+    { label: labels.contact, href: '#contact' },
+  ];
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -108,7 +131,7 @@ function Navbar({ title }: { title: string }) {
               textDecoration: 'none',
             }}
           >
-            IVO
+            {mobileTitle}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -130,8 +153,11 @@ function Navbar({ title }: { title: string }) {
             href="#contact"
             sx={{ display: { xs: 'none', md: 'inline-flex' } }}
           >
-            Hire Me
+            {labels.contact}
           </Button>
+          <Box sx={{ ml: { xs: 0, md: 1.5 } }}>
+            <LanguageBtn language={language} onLanguageChange={onLanguageChange} />
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

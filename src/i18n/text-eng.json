@@ -1,0 +1,192 @@
+{
+  "brand": {
+    "desktopTitle": "IVO BUBEŇKO",
+    "mobileTitle": "IVO",
+    "copyrightName": "Ivo Bubeňko, Bc."
+  },
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "profile": {
+    "name": "Ivo Bubeňko, Bc.",
+    "role": "Software Developer focused on AWS, Web Development, CI/CD and Secure Digital Systems",
+    "location": "Slovakia / Košice region",
+    "summary": "Final-year Informatics student at FEI TUKE and full-time Junior SAP ABAP Developer combining enterprise development experience with hands-on AWS, CI/CD, serverless backend and frontend project work."
+  },
+  "heroCtas": {
+    "projects": "View my projects",
+    "experience": "See my experience",
+    "contact": "Contact Me"
+  },
+  "projectCtas": {
+    "demo": "Open Demo",
+    "details": "View Project"
+  },
+  "sections": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Featured Project",
+    "skills": "Skills",
+    "education": "Education",
+    "languages": "Languages",
+    "contact": "Contact"
+  },
+  "about": {
+    "paragraphs": [
+      "I am a final-year Informatics student at the Faculty of Electrical Engineering and Informatics, Technical University of Košice. I work full-time as a Junior SAP ABAP Developer and stay hands-on with modern web and cloud technologies through practical projects, continuous learning and real-world development experience.",
+      "My profile combines enterprise software development with practical work in AWS, CI/CD, serverless applications and frontend development. I focus on reliable software, automated deployments and secure digital systems, including verifiable QR code workflows based on digital signatures."
+    ],
+    "focusAreas": [
+      "SAP ABAP development",
+      "debugging and root-cause analysis",
+      "test service development",
+      "process optimization",
+      "AWS cloud development",
+      "serverless applications",
+      "frontend development",
+      "CI/CD automation",
+      "secure QR code verification and digital signatures"
+    ]
+  },
+  "projects": [
+    {
+      "title": "AsphalesQR - Securing QR Code Integrity",
+      "description": "Diploma thesis project focused on verifying the integrity and authenticity of QR code content using digital signatures.",
+      "outcome": "Explores verifiable QR codes, browser-based verification, secure scanning workflows and practical deployment of QR content authenticity checks.",
+      "tech": [
+        "QR code integrity",
+        "Digital signatures",
+        "Browser verification",
+        "Secure scanning",
+        "Web demo"
+      ],
+      "link": "https://asphalesqr.com"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Junior SAP ABAP Developer",
+      "company": "Accenture, Košice",
+      "period": "April 2024 - May 2026",
+      "details": [
+        "Developed and maintained test services based on tester specifications.",
+        "Worked on improving functional and performance reliability of software.",
+        "Analyzed and debugged software errors, identified root causes and proposed optimized fixes.",
+        "Contributed to process development and optimization with focus on efficiency, scalability and integration into existing systems."
+      ]
+    },
+    {
+      "role": "Frontend Developer",
+      "company": "ClinBi",
+      "period": "August 2025 - December 2025",
+      "technologies": [
+        "Svelte",
+        "Node.js",
+        "AWS S3",
+        "CloudFront",
+        "Lambda",
+        "SAM",
+        "RDS",
+        "GitLab CI/CD",
+        "AWS CLI"
+      ],
+      "details": [
+        "Implemented a GitLab CI/CD deployment pipeline for a Svelte frontend across multiple development environments.",
+        "Used separate S3 buckets and CloudFront distributions per environment for clean isolation and repeatable releases.",
+        "Automated CloudFront cache invalidation through AWS CLI so users received fresh frontend assets after deployment.",
+        "Developed and maintained Svelte frontend functionality based on evolving requirements.",
+        "Contributed to an AWS SAM serverless backend in Node.js, updated Lambda handlers integrated with Amazon RDS and implemented a dedicated authorization Lambda."
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": "Programming Languages",
+      "items": ["Java", "JavaScript", "SAP ABAP"]
+    },
+    {
+      "title": "Cloud & AWS",
+      "items": [
+        "AWS S3",
+        "Amazon CloudFront",
+        "AWS Lambda",
+        "AWS SAM",
+        "Amazon RDS",
+        "AWS CLI"
+      ]
+    },
+    {
+      "title": "Frontend",
+      "items": ["Svelte", "React", "Tailwind CSS"]
+    },
+    {
+      "title": "Backend / Runtime",
+      "items": ["Node.js", "Middy"]
+    },
+    {
+      "title": "CI/CD & Tooling",
+      "items": ["GitLab CI/CD", "GitHub"]
+    },
+    {
+      "title": "Software Engineering",
+      "items": [
+        "debugging",
+        "root-cause analysis",
+        "test service development",
+        "process optimization",
+        "deployment automation",
+        "serverless development"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Technical University of Košice - Faculty of Electrical Engineering and Informatics",
+      "program": "Informatics, Bachelor's degree",
+      "period": "September 2021 - June 2024",
+      "details": ["Student Member of the Academic Senate, FEI TUKE"]
+    },
+    {
+      "school": "Technical University of Košice - Faculty of Electrical Engineering and Informatics",
+      "program": "Informatics, Master's degree",
+      "period": "September 2024 - Present",
+      "details": [
+        "Final-year Informatics student",
+        "Diploma Thesis: Securing QR Code Integrity",
+        "Thesis focus: verifiable QR codes, digital signatures, integrity verification and authenticity of QR content"
+      ]
+    }
+  ],
+  "languages": ["English - Upper-intermediate, B2", "German - Beginner, A1"],
+  "contact": {
+    "text": "I am open to software development roles and practical projects around AWS, CI/CD, secure web applications and enterprise development.",
+    "links": [
+      {
+        "title": "Contact me",
+        "variant": "contained",
+        "link": "mailto:ivo.bub@gmail.com",
+        "rel": " "
+      },
+      {
+        "title": "GitHub",
+        "link": "https://github.com/ivobubenko"
+      },
+      {
+        "title": "LinkedIn",
+        "link": "https://www.linkedin.com/in/ivo-bubenko-07788529a/"
+      },
+      {
+        "title": "AsphalesQR demo",
+        "link": "https://asphalesqr.com"
+      }
+    ]
+  },
+  "footer": {
+    "builtWith": "Built with React, TypeScript, and Material UI."
+  }
+}
