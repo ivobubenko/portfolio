@@ -53,6 +53,7 @@ Resources:
         DefaultRootObject: index.html
         PriceClass: PriceClass_200
 
+
         Origins:
           - Id: S3Origin
             DomainName: !GetAtt PortfolioBucket.RegionalDomainName
