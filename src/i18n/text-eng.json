@@ -2,7 +2,7 @@
   "brand": {
     "desktopTitle": "IVO BUBEŇKO",
     "mobileTitle": "IVO",
-    "copyrightName": "Ivo Bubeňko, Bc."
+    "copyrightName": "Ivo Bubeňko, Ing."
   },
   "nav": {
     "about": "About",
@@ -13,10 +13,10 @@
     "contact": "Contact"
   },
   "profile": {
-    "name": "Ivo Bubeňko, Bc.",
+    "name": "Ivo Bubeňko, Ing.",
     "role": "Software Developer focused on AWS, Web Development, CI/CD and Secure Digital Systems",
     "location": "Slovakia / Košice region",
-    "summary": "Final-year Informatics student at FEI TUKE and full-time Junior SAP ABAP Developer combining enterprise development experience with hands-on AWS, CI/CD, serverless backend and frontend project work."
+    "summary": "Informatics graduate from FEI TUKE with enterprise SAP ABAP experience and hands-on AWS, CI/CD, serverless backend and frontend project work."
   },
   "heroCtas": {
     "projects": "View my projects",
@@ -38,7 +38,7 @@
   },
   "about": {
     "paragraphs": [
-      "I am a final-year Informatics student at the Faculty of Electrical Engineering and Informatics, Technical University of Košice. I work full-time as a Junior SAP ABAP Developer and stay hands-on with modern web and cloud technologies through practical projects, continuous learning and real-world development experience.",
+      "I am an Informatics graduate from the Faculty of Electrical Engineering and Informatics, Technical University of Košice. My background includes full-time work as a Junior SAP ABAP Developer, along with hands-on experience in modern web and cloud technologies through practical projects, continuous learning and real-world development work.",
       "My profile combines enterprise software development with practical work in AWS, CI/CD, serverless applications and frontend development. I focus on reliable software, automated deployments and secure digital systems, including verifiable QR code workflows based on digital signatures."
     ],
     "focusAreas": [
@@ -154,9 +154,9 @@
     {
       "school": "Technical University of Košice - Faculty of Electrical Engineering and Informatics",
       "program": "Informatics, Master's degree",
-      "period": "September 2024 - Present",
+      "period": "September 2024 - June 2026",
       "details": [
-        "Final-year Informatics student",
+        "Successfully completed Master's studies in Informatics",
         "Diploma Thesis: Securing QR Code Integrity",
         "Thesis focus: verifiable QR codes, digital signatures, integrity verification and authenticity of QR content"
       ]

@@ -2,7 +2,7 @@
   "brand": {
     "desktopTitle": "IVO BUBEŇKO",
     "mobileTitle": "IVO",
-    "copyrightName": "Ivo Bubeňko, Bc."
+    "copyrightName": "Ivo Bubeňko, Ing."
   },
   "nav": {
     "about": "O mne",
@@ -13,10 +13,10 @@
     "contact": "Kontakt"
   },
   "profile": {
-    "name": "Ivo Bubeňko, Bc.",
+    "name": "Ivo Bubeňko, Ing.",
     "role": "Software developer so zameraním na AWS, web development, CI/CD a bezpečné digitálne systémy",
     "location": "Slovensko / Košický región",
-    "summary": "Študent posledného ročníka informatiky na FEI TUKE a full-time Junior SAP ABAP Developer, ktorý prepája enterprise vývoj s praktickou prácou v AWS, CI/CD, serverless backende a frontend projektoch."
+    "summary": "Absolvent informatiky na FEI TUKE s enterprise skúsenosťami v SAP ABAP a praktickou prácou v AWS, CI/CD, serverless backende a frontend projektoch."
   },
   "heroCtas": {
     "projects": "Zobraziť projekty",
@@ -38,7 +38,7 @@
   },
   "about": {
     "paragraphs": [
-      "Som študent posledného ročníka informatiky na Fakulte elektrotechniky a informatiky Technickej univerzity v Košiciach. Pracujem full-time ako Junior SAP ABAP Developer a zároveň zostávam prakticky aktívny v moderných webových a cloudových technológiách cez projekty, kontinuálne vzdelávanie a reálnu vývojársku prax.",
+      "Som absolvent informatiky na Fakulte elektrotechniky a informatiky Technickej univerzity v Košiciach. Moje skúsenosti zahŕňajú full-time prácu ako Junior SAP ABAP Developer a praktickú prácu v moderných webových a cloudových technológiách cez projekty, kontinuálne vzdelávanie a reálnu vývojársku prax.",
       "Môj profil spája enterprise software development s praktickou prácou v AWS, CI/CD, serverless aplikáciách a frontend vývoji. Zameriavam sa na spoľahlivý softvér, automatizované deploymenty a bezpečné digitálne systémy vrátane overiteľných QR workflow založených na digitálnych podpisoch."
     ],
     "focusAreas": [
@@ -154,9 +154,9 @@
     {
       "school": "Technická univerzita v Košiciach - Fakulta elektrotechniky a informatiky",
       "program": "Informatika, inžinierske štúdium",
-      "period": "september 2024 - súčasnosť",
+      "period": "september 2024 - jún 2026",
       "details": [
-        "Študent posledného ročníka informatiky",
+        "Úspešne ukončené inžinierske štúdium informatiky",
         "Diplomová práca: Securing QR Code Integrity",
         "Zameranie práce: overiteľné QR kódy, digitálne podpisy, overovanie integrity a autenticity QR obsahu"
       ]
