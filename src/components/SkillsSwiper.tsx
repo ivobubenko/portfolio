@@ -19,6 +19,12 @@ type SkillsSwiperProps = {
     skillGroups: SkillGroup[];
 };
 
+const cardAccents = [
+    { solid: '#63d3c8', soft: 'rgba(99, 211, 200, 0.16)' },
+    { solid: '#f28a6f', soft: 'rgba(242, 138, 111, 0.16)' },
+    { solid: '#f2c66d', soft: 'rgba(242, 198, 109, 0.16)' },
+];
+
 function SkillsSwiper({ skillGroups }: SkillsSwiperProps) {
     return (
         <StaticBg>
@@ -40,6 +46,10 @@ function SkillsSwiper({ skillGroups }: SkillsSwiperProps) {
                     '& .swiper-slide-active': {
                         opacity: 1,
                         filter: 'saturate(1)',
+                        '& .skill-card': {
+                            transform: 'translateY(-4px)',
+                            boxShadow: '0 28px 65px rgba(2, 14, 13, 0.38)',
+                        },
                     },
                     '& .swiper-slide-prev, & .swiper-slide-next': {
                         opacity: 0.72,
@@ -97,31 +107,89 @@ function SkillsSwiper({ skillGroups }: SkillsSwiperProps) {
                     }}
                     className="mySwiper"
                 >
-                    {skillGroups.map((group) => (
+                    {skillGroups.map((group, index) => {
+                        const accent = cardAccents[index % cardAccents.length];
+
+                        return (
                         <SwiperSlide key={group.title}>
                             <Paper
+                                className="skill-card"
                                 sx={{
                                     height: '100%',
-                                    p: 3,
-                                    borderRadius: 2.5,
-                                    border: '1px solid #e1eaf4',
-                                    boxShadow: '0 18px 42px rgba(15, 23, 42, 0.12)',
+                                    p: { xs: 2.75, md: 3.5 },
+                                    borderRadius: 1,
+                                    overflow: 'hidden',
+                                    position: 'relative',
+                                    color: '#f5fbfa',
+                                    bgcolor: 'rgba(8, 29, 27, 0.88)',
+                                    backdropFilter: 'blur(14px)',
+                                    border: `1px solid ${accent.solid}66`,
+                                    boxShadow: '0 18px 42px rgba(2, 14, 13, 0.28)',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
+                                    transition: 'transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease',
+                                    '&::before': {
+                                        content: '""',
+                                        position: 'absolute',
+                                        inset: '0 auto 0 0',
+                                        width: 5,
+                                        bgcolor: accent.solid,
+                                    },
+                                    '&::after': {
+                                        content: '""',
+                                        position: 'absolute',
+                                        inset: 0,
+                                        opacity: 0.18,
+                                        pointerEvents: 'none',
+                                        backgroundImage: `repeating-linear-gradient(90deg, ${accent.solid} 0 1px, transparent 1px 42px), repeating-linear-gradient(0deg, ${accent.solid} 0 1px, transparent 1px 42px)`,
+                                        maskImage: 'linear-gradient(110deg, transparent 18%, #000 100%)',
+                                    },
                                 }}
                             >
-                                <Typography variant="h3" sx={{ mb: 2, fontWeight: 700 }}>
+                                <Box
+                                    aria-hidden
+                                    sx={{
+                                        position: 'relative',
+                                        zIndex: 1,
+                                        width: 42,
+                                        height: 4,
+                                        mb: 2,
+                                        bgcolor: accent.solid,
+                                        boxShadow: `12px 0 0 ${accent.soft}`,
+                                    }}
+                                />
+                                <Typography
+                                    variant="h5"
+                                    sx={{ position: 'relative', zIndex: 1, mb: 2.5, color: '#fff', maxWidth: 320 }}
+                                >
                                     {group.title}
                                 </Typography>
-                                <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                                <Stack
+                                    direction="row"
+                                    spacing={1}
+                                    useFlexGap
+                                    flexWrap="wrap"
+                                    sx={{ position: 'relative', zIndex: 1 }}
+                                >
                                     {group.items.map((item) => (
-                                        <CustomizedChip key={item} label={item} />
+                                        <CustomizedChip
+                                            key={item}
+                                            label={item}
+                                            sx={{
+                                                height: 34,
+                                                color: '#eef8f6',
+                                                bgcolor: accent.soft,
+                                                borderColor: `${accent.solid}77`,
+                                                '& .MuiChip-label': { px: 1.5 },
+                                            }}
+                                        />
                                     ))}
                                 </Stack>
                             </Paper>
                         </SwiperSlide>
-                    ))}
+                        );
+                    })}
                 </Swiper>
             </Box>
         </StaticBg>
