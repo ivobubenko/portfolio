@@ -20,6 +20,7 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
     return (
         <Timeline
             sx={{
+                p: 0,
                 [`& .${timelineItemClasses.root}:before`]: {
                     flex: 0,
                     padding: 0,
@@ -29,11 +30,11 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
             {experience.map((item, index) => (
                 <TimelineItem key={`${item.company}-${item.role}`}>
                     <TimelineSeparator>
-                        <TimelineDot />
+                        <TimelineDot sx={{ bgcolor: 'secondary.main', boxShadow: '0 0 0 5px rgba(211, 95, 66, 0.12)' }} />
                         {index < experience.length - 1 && <TimelineConnector />}
                     </TimelineSeparator>
                     <TimelineContent>
-                        <Paper sx={{ p: 3, borderRadius: 2.5 }}>
+                        <Paper sx={{ p: { xs: 2.25, md: 3 }, ml: { xs: 0.5, md: 1.5 }, borderRadius: 1 }}>
                             <Typography
                                 color="primary"
                                 variant="overline"

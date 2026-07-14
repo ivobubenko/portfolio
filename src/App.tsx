@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './layout/Navbar';
 import Section from './components/Sections';
 import Banner from './components/Banner';
@@ -21,8 +21,23 @@ function App() {
   const [language, setLanguage] = useState<Language>(defaultLanguage);
   const content = getPortfolioContent(language);
 
+  useEffect(() => {
+    document.documentElement.lang = language;
+
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (description) {
+      description.content = content.profile.summary;
+    }
+  }, [content.profile.summary, language]);
+
   return (
-    <Box sx={{ backgroundColor: '#f4f7fb', minHeight: '100vh' }}>
+    <Box
+      sx={{
+        backgroundColor: 'background.default',
+        backgroundImage: 'linear-gradient(180deg, #eef4f1 0, #f7f7f3 420px)',
+        minHeight: '100vh',
+      }}
+    >
       <Navbar
         title={content.brand.desktopTitle}
         mobileTitle={content.brand.mobileTitle}
@@ -30,7 +45,7 @@ function App() {
         language={language}
         onLanguageChange={setLanguage}
       />
-      <Container maxWidth="xl" sx={{ py: { xs: 5, md: 9 } }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 3.5, md: 6 } }}>
         <Banner profile={content.profile} ctas={content.heroCtas} />
         <Section boxId="about" title={content.sections.about} sx={{ mb: { xs: 7, md: 10 } }}>
           <Stack spacing={2.5}>
@@ -56,9 +71,9 @@ function App() {
         <Section boxId="projects" title={content.sections.projects} sx={{ mb: { xs: 7, md: 10 } }}>
           <Grid container spacing={2.5}>
             {content.projects.map((project) => (
-              <Grid key={project.title} size={{ xs: 12, md: 8 }}>
-                <Card sx={{ height: '100%' }}>
-                  <CardContent sx={{ p: 3 }}>
+              <Grid key={project.title} size={{ xs: 12, md: 9 }}>
+                <Card sx={{ height: '100%', borderLeft: '4px solid', borderLeftColor: 'secondary.main' }}>
+                  <CardContent sx={{ p: { xs: 2.5, md: 3.5 }, '&:last-child': { pb: { xs: 2.5, md: 3.5 } } }}>
                     <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                       {project.title}
                     </Typography>
@@ -98,7 +113,7 @@ function App() {
           <Grid container spacing={2.5}>
             {content.education.map((item) => (
               <Grid key={`${item.program}-${item.period}`} size={{ xs: 12, md: 6 }}>
-                <Paper sx={{ p: 3, borderRadius: 2.5, height: '100%' }}>
+                <Paper sx={{ p: { xs: 2.5, md: 3 }, height: '100%', transition: 'transform 180ms ease, box-shadow 180ms ease', '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 18px 42px rgba(28, 43, 39, 0.1)' } }}>
                   <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                     {item.program}
                   </Typography>
@@ -135,7 +150,7 @@ function App() {
           boxId="contact"
           contacts={content.contact.links}
         />
-        <Typography sx={{ mt: 5, textAlign: 'center' }} color="text.secondary" variant="body2">
+        <Typography sx={{ mt: 5, pt: 3, borderTop: '1px solid', borderColor: 'divider', textAlign: 'center' }} color="text.secondary" variant="body2">
           © {new Date().getFullYear()} {content.brand.copyrightName}. {content.footer.builtWith}
         </Typography>
       </Container>

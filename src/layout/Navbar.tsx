@@ -53,9 +53,14 @@ function Navbar({
   };
 
   return (
-    <AppBar position="sticky" color="default" elevation={0} sx={{ borderBottom: '1px solid #e8edf6' }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    <AppBar
+      position="sticky"
+      color="default"
+      elevation={0}
+      sx={{ bgcolor: 'rgba(247, 247, 243, 0.9)', backdropFilter: 'blur(14px)', borderBottom: '1px solid', borderColor: 'divider' }}
+    >
+      <Container maxWidth="lg">
+        <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 } }}>
           <Typography
             variant="h5"
             noWrap
@@ -65,9 +70,9 @@ function Navbar({
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Inter, sans-serif',
-              fontWeight: 700,
-              letterSpacing: '.08rem',
-              color: '#0c1a3a',
+              fontWeight: 800,
+              letterSpacing: 0,
+              color: 'text.primary',
               textDecoration: 'none',
             }}
           >
@@ -125,9 +130,9 @@ function Navbar({
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'Inter, sans-serif',
-              fontWeight: 700,
-              letterSpacing: '.08rem',
-              color: '#0c1a3a',
+              fontWeight: 800,
+              letterSpacing: 0,
+              color: 'text.primary',
               textDecoration: 'none',
             }}
           >
@@ -140,7 +145,7 @@ function Navbar({
                 key={page.label}
                 onClick={handleCloseNavMenu}
                 href={page.href}
-                sx={{ my: 2, color: '#243146', display: 'block' }}
+                sx={{ mx: 0.25, color: 'text.secondary', display: 'block', '&:hover': { color: 'primary.main', bgcolor: 'transparent' } }}
               >
                 {page.label}
               </Button>

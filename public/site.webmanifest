@@ -1,0 +1,17 @@
+{
+  "name": "Ivo Bubeňko Portfolio",
+  "short_name": "Ivo Bubeňko",
+  "description": "Software developer portfolio focused on AWS, web development, CI/CD, and secure digital systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f3",
+  "theme_color": "#153b37",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

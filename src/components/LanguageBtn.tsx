@@ -49,7 +49,7 @@ function LanguageBtn({ language, onLanguageChange }: LanguageBtnProps) {
         color="inherit"
         onClick={handleOpen}
         startIcon={<LanguageIcon />}
-        sx={{ color: '#243146', minWidth: 88 }}
+        sx={{ color: 'text.primary', minWidth: 82, borderColor: 'divider' }}
         variant="outlined"
       >
         {selectedLanguage.shortLabel}
