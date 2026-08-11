@@ -30,11 +30,19 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
             {experience.map((item, index) => (
                 <TimelineItem key={`${item.company}-${item.role}`}>
                     <TimelineSeparator>
-                        <TimelineDot sx={{ bgcolor: 'secondary.main', boxShadow: '0 0 0 5px rgba(211, 95, 66, 0.12)' }} />
-                        {index < experience.length - 1 && <TimelineConnector />}
+                        <TimelineDot sx={{ bgcolor: 'secondary.main', boxShadow: 'none' }} />
+                        {index < experience.length - 1 && <TimelineConnector sx={{ bgcolor: 'divider', width: 2 }} />}
                     </TimelineSeparator>
                     <TimelineContent>
-                        <Paper sx={{ p: { xs: 2.25, md: 3 }, ml: { xs: 0.5, md: 1.5 }, borderRadius: 1 }}>
+                        <Paper sx={{
+                            p: { xs: 1.75, md: 2.25 },
+                            ml: { xs: 0.5, md: 1.5 },
+                            borderRadius: 1,
+                            transition: 'border-color 180ms ease, box-shadow 180ms ease',
+                            '&:hover': {
+                                borderColor: 'primary.main',
+                            },
+                        }}>
                             <Typography
                                 color="primary"
                                 variant="overline"
@@ -61,7 +69,7 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
                                 </Stack>
                             )}
                             <Divider sx={{ my: 1.5 }} />
-                            <Stack component="ul" spacing={1} sx={{ pl: 2.5, m: 0 }}>
+                                <Stack component="ul" spacing={0.75} sx={{ pl: 2.5, m: 0 }}>
                                 {item.details.map((detail) => (
                                     <Typography key={detail} component="li" color="text.secondary">
                                         {detail}
