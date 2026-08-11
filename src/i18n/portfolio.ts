@@ -62,6 +62,7 @@ export type PortfolioContent = {
     experience: string;
     projects: string;
     skills: string;
+    certifications: string;
     education: string;
     languages: string;
     contact: string;
@@ -75,6 +76,12 @@ export type PortfolioContent = {
   skillGroups: {
     title: string;
     items: string[];
+  }[];
+  certifications: {
+    name: string;
+    issuer: string;
+    link: string;
+    linkLabel: string;
   }[];
   education: Education[];
   languages: string[];

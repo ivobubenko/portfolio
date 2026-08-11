@@ -32,6 +32,7 @@
     "experience": "Skúsenosti",
     "projects": "Vybraný projekt",
     "skills": "Zručnosti",
+    "certifications": "Certifikácie",
     "education": "Vzdelanie",
     "languages": "Jazyky",
     "contact": "Kontakt"
@@ -130,7 +131,7 @@
     },
     {
       "title": "CI/CD & Tooling",
-      "items": ["GitLab CI/CD", "GitHub"]
+      "items": ["GitLab CI/CD", "GitHub", "Kubernetes"]
     },
     {
       "title": "Software engineering",
@@ -142,6 +143,14 @@
         "deployment automation",
         "serverless development"
       ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Solutions Architect - Associate",
+      "issuer": "Amazon Web Services",
+      "link": "https://www.credly.com/users/ivo-bubenko.62272922/badges/credly",
+      "linkLabel": "Zobraziť certifikát na Credly"
     }
   ],
   "education": [

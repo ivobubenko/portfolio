@@ -15,7 +15,8 @@ import Banner from './components/Banner';
 import Contact from './components/Contact';
 import { defaultLanguage, getPortfolioContent, type Language } from './i18n/portfolio';
 import ProjectsTimeline from './components/ProjectsTimeline';
-import SkillsSwiper from './components/SkillsSwiper';
+import SkillsGrid from './components/SkillsGrid';
+import Certifications from './components/Certifications';
 import type { ColorMode } from './theme';
 
 type AppProps = {
@@ -41,8 +42,9 @@ function App({ colorMode, onColorModeChange }: AppProps) {
       sx={{
         backgroundColor: 'background.default',
         backgroundImage: (theme) => theme.palette.mode === 'dark'
-          ? 'radial-gradient(circle at 50% 0, rgba(42, 119, 108, 0.18), transparent 520px)'
-          : 'linear-gradient(180deg, #eef4f1 0, #f7f7f3 420px)',
+          ? 'repeating-linear-gradient(90deg, rgba(99, 211, 200, 0.025) 0 1px, transparent 1px 48px), repeating-linear-gradient(0deg, rgba(99, 211, 200, 0.025) 0 1px, transparent 1px 48px), radial-gradient(circle at 50% 0, rgba(42, 119, 108, 0.18), transparent 520px)'
+          : 'repeating-linear-gradient(90deg, rgba(23, 107, 103, 0.025) 0 1px, transparent 1px 48px), repeating-linear-gradient(0deg, rgba(23, 107, 103, 0.025) 0 1px, transparent 1px 48px), linear-gradient(180deg, #eef4f1 0, #f7f7f3 420px)',
+        backgroundSize: '48px 48px, 48px 48px, auto',
         minHeight: '100vh',
         transition: 'background-color 220ms ease',
       }}
@@ -58,33 +60,50 @@ function App({ colorMode, onColorModeChange }: AppProps) {
       />
       <Container maxWidth="lg" sx={{ py: { xs: 3.5, md: 6 } }}>
         <Banner profile={content.profile} ctas={content.heroCtas} />
-        <Section boxId="about" title={content.sections.about} sx={{ mb: { xs: 7, md: 10 } }}>
-          <Stack spacing={2.5}>
-            {content.about.paragraphs.map((paragraph) => (
-              <Typography key={paragraph} color="text.secondary" sx={{ maxWidth: 980 }}>
-                {paragraph}
-              </Typography>
-            ))}
-            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-              {content.about.focusAreas.map((item) => (
-                <CustomizedChip key={item} label={item} />
-              ))}
-            </Stack>
-          </Stack>
-        </Section>
-
-        <Section boxId="experience" title={content.sections.experience} sx={{ mb: { xs: 7, md: 10 } }}>
-          <Stack spacing={2}>
-            <ProjectsTimeline experience={content.experience} />
-          </Stack>
-        </Section>
-
         <Section boxId="projects" title={content.sections.projects} sx={{ mb: { xs: 7, md: 10 } }}>
           <Grid container spacing={2.5}>
             {content.projects.map((project) => (
-              <Grid key={project.title} size={{ xs: 12, md: 9 }}>
-                <Card sx={{ height: '100%', borderLeft: '4px solid', borderLeftColor: 'secondary.main' }}>
-                  <CardContent sx={{ p: { xs: 2.5, md: 3.5 }, '&:last-child': { pb: { xs: 2.5, md: 3.5 } } }}>
+              <Grid key={project.title} size={{ xs: 12, md: 10 }}>
+                <Card
+                  sx={{
+                    height: '100%',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    borderLeft: '4px solid',
+                    borderLeftColor: 'secondary.main',
+                    transition: 'transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      zIndex: 1,
+                      top: 14,
+                      right: 14,
+                      width: 28,
+                      height: 28,
+                      borderTop: '2px solid',
+                      borderRight: '2px solid',
+                      borderColor: 'secondary.main',
+                      opacity: 0.72,
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      inset: 0,
+                      pointerEvents: 'none',
+                      opacity: (theme) => theme.palette.mode === 'dark' ? 0.1 : 0.055,
+                      backgroundImage: 'repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 40px), repeating-linear-gradient(0deg, currentColor 0 1px, transparent 1px 40px)',
+                      maskImage: 'linear-gradient(115deg, transparent 15%, #000 100%)',
+                    },
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      borderColor: 'secondary.main',
+                      boxShadow: (theme) => theme.palette.mode === 'dark'
+                        ? '0 24px 56px rgba(0, 0, 0, 0.4)'
+                        : '0 24px 56px rgba(28, 43, 39, 0.13)',
+                    },
+                  }}
+                >
+                  <CardContent sx={{ position: 'relative', zIndex: 2, p: { xs: 2.5, md: 3.5 }, '&:last-child': { pb: { xs: 2.5, md: 3.5 } } }}>
                     <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                       {project.title}
                     </Typography>
@@ -116,15 +135,62 @@ function App({ colorMode, onColorModeChange }: AppProps) {
           </Grid>
         </Section>
 
+        <Section boxId="experience" title={content.sections.experience} sx={{ mb: { xs: 7, md: 10 } }}>
+          <Stack spacing={2}>
+            <ProjectsTimeline experience={content.experience} />
+          </Stack>
+        </Section>
+
         <Section boxId="skills" title={content.sections.skills} sx={{ mb: { xs: 7, md: 10 } }}>
-          <SkillsSwiper skillGroups={content.skillGroups} />
+          <SkillsGrid skillGroups={content.skillGroups} />
+        </Section>
+
+        <Section boxId="certifications" title={content.sections.certifications} sx={{ mb: { xs: 7, md: 10 } }}>
+          <Certifications certifications={content.certifications} />
+        </Section>
+
+        <Section boxId="about" title={content.sections.about} sx={{ mb: { xs: 7, md: 10 } }}>
+          <Stack spacing={2.5}>
+            {content.about.paragraphs.map((paragraph) => (
+              <Typography key={paragraph} color="text.secondary" sx={{ maxWidth: 980 }}>
+                {paragraph}
+              </Typography>
+            ))}
+            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+              {content.about.focusAreas.map((item) => (
+                <CustomizedChip key={item} label={item} />
+              ))}
+            </Stack>
+          </Stack>
         </Section>
 
         <Section boxId="education" title={content.sections.education} sx={{ mb: { xs: 7, md: 10 } }}>
           <Grid container spacing={2.5}>
             {content.education.map((item) => (
               <Grid key={`${item.program}-${item.period}`} size={{ xs: 12, md: 6 }}>
-                <Paper sx={{ p: { xs: 2.5, md: 3 }, height: '100%', transition: 'transform 180ms ease, box-shadow 180ms ease', '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 18px 42px rgba(28, 43, 39, 0.1)' } }}>
+                <Paper sx={{
+                  p: { xs: 2.5, md: 3 },
+                  height: '100%',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: 72,
+                    height: 3,
+                    background: 'linear-gradient(90deg, #d35f42, transparent)',
+                  },
+                  '&:hover': {
+                    transform: 'translateY(-3px)',
+                    borderColor: 'primary.main',
+                    boxShadow: (theme) => theme.palette.mode === 'dark'
+                      ? '0 18px 42px rgba(0, 0, 0, 0.3)'
+                      : '0 18px 42px rgba(28, 43, 39, 0.1)',
+                  },
+                }}>
                   <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                     {item.program}
                   </Typography>

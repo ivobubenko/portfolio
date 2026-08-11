@@ -31,10 +31,33 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
                 <TimelineItem key={`${item.company}-${item.role}`}>
                     <TimelineSeparator>
                         <TimelineDot sx={{ bgcolor: 'secondary.main', boxShadow: '0 0 0 5px rgba(211, 95, 66, 0.12)' }} />
-                        {index < experience.length - 1 && <TimelineConnector />}
+                        {index < experience.length - 1 && <TimelineConnector sx={{ bgcolor: 'divider', width: 2 }} />}
                     </TimelineSeparator>
                     <TimelineContent>
-                        <Paper sx={{ p: { xs: 2.25, md: 3 }, ml: { xs: 0.5, md: 1.5 }, borderRadius: 1 }}>
+                        <Paper sx={{
+                            p: { xs: 2.25, md: 3 },
+                            ml: { xs: 0.5, md: 1.5 },
+                            borderRadius: 1,
+                            position: 'relative',
+                            overflow: 'hidden',
+                            transition: 'border-color 180ms ease, transform 180ms ease',
+                            '&::after': {
+                                content: '""',
+                                position: 'absolute',
+                                top: 12,
+                                right: 12,
+                                width: 18,
+                                height: 18,
+                                borderTop: '1px solid',
+                                borderRight: '1px solid',
+                                borderColor: 'primary.main',
+                                opacity: 0.45,
+                            },
+                            '&:hover': {
+                                borderColor: 'primary.main',
+                                transform: 'translateX(3px)',
+                            },
+                        }}>
                             <Typography
                                 color="primary"
                                 variant="overline"

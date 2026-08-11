@@ -44,10 +44,10 @@ function Navbar({
 }) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const pages = [
-    { label: labels.about, href: '#about' },
-    { label: labels.experience, href: '#experience' },
     { label: labels.projects, href: '#projects' },
+    { label: labels.experience, href: '#experience' },
     { label: labels.skills, href: '#skills' },
+    { label: labels.about, href: '#about' },
     { label: labels.education, href: '#education' },
     { label: labels.contact, href: '#contact' },
   ];

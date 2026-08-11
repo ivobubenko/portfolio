@@ -20,7 +20,7 @@ interface ContactPropsInterface {
 
 function Contact({ title, text, contacts, boxId, boxComponent = "section" }: ContactPropsInterface) {
     return (<Box id={boxId} component={boxComponent} sx={{ mb: 2, scrollMarginTop: 92 }}>
-        <Paper sx={{ p: { xs: 3, md: 5 }, borderRadius: 1, color: '#fff', bgcolor: '#153b37', borderColor: '#153b37', boxShadow: '0 20px 48px rgba(21, 59, 55, 0.18)' }}>
+        <Paper sx={{ p: { xs: 3, md: 5 }, borderRadius: 1, color: '#fff', bgcolor: '#153b37', borderColor: '#153b37', boxShadow: '0 20px 48px rgba(21, 59, 55, 0.18)', position: 'relative', overflow: 'hidden', backgroundImage: 'repeating-linear-gradient(90deg, rgba(99, 211, 200, 0.055) 0 1px, transparent 1px 44px), repeating-linear-gradient(0deg, rgba(99, 211, 200, 0.055) 0 1px, transparent 1px 44px)', '&::after': { content: '""', position: 'absolute', top: 18, right: 18, width: 36, height: 36, borderTop: '2px solid rgba(99, 211, 200, 0.65)', borderRight: '2px solid rgba(99, 211, 200, 0.65)' }, '& > *': { position: 'relative', zIndex: 1 } }}>
             <Typography variant="h4" sx={{ fontWeight: 700, mb: 1 }}>
                 {title}
             </Typography>
