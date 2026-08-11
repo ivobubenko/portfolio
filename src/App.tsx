@@ -16,8 +16,14 @@ import Contact from './components/Contact';
 import { defaultLanguage, getPortfolioContent, type Language } from './i18n/portfolio';
 import ProjectsTimeline from './components/ProjectsTimeline';
 import SkillsSwiper from './components/SkillsSwiper';
+import type { ColorMode } from './theme';
 
-function App() {
+type AppProps = {
+  colorMode: ColorMode;
+  onColorModeChange: () => void;
+};
+
+function App({ colorMode, onColorModeChange }: AppProps) {
   const [language, setLanguage] = useState<Language>(defaultLanguage);
   const content = getPortfolioContent(language);
 
@@ -34,8 +40,11 @@ function App() {
     <Box
       sx={{
         backgroundColor: 'background.default',
-        backgroundImage: 'linear-gradient(180deg, #eef4f1 0, #f7f7f3 420px)',
+        backgroundImage: (theme) => theme.palette.mode === 'dark'
+          ? 'radial-gradient(circle at 50% 0, rgba(42, 119, 108, 0.18), transparent 520px)'
+          : 'linear-gradient(180deg, #eef4f1 0, #f7f7f3 420px)',
         minHeight: '100vh',
+        transition: 'background-color 220ms ease',
       }}
     >
       <Navbar
@@ -44,6 +53,8 @@ function App() {
         labels={content.nav}
         language={language}
         onLanguageChange={setLanguage}
+        colorMode={colorMode}
+        onColorModeChange={onColorModeChange}
       />
       <Container maxWidth="lg" sx={{ py: { xs: 3.5, md: 6 } }}>
         <Banner profile={content.profile} ctas={content.heroCtas} />

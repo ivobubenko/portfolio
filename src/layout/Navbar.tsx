@@ -6,11 +6,15 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import Tooltip from '@mui/material/Tooltip';
 import LanguageBtn from '../components/LanguageBtn';
 import type { Language } from '../i18n/portfolio';
+import type { ColorMode } from '../theme';
 
 type NavbarLabels = {
   about: string;
@@ -27,12 +31,16 @@ function Navbar({
   labels,
   language,
   onLanguageChange,
+  colorMode,
+  onColorModeChange,
 }: {
   title: string;
   mobileTitle: string;
   labels: NavbarLabels;
   language: Language;
   onLanguageChange: (language: Language) => void;
+  colorMode: ColorMode;
+  onColorModeChange: () => void;
 }) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const pages = [
@@ -57,7 +65,12 @@ function Navbar({
       position="sticky"
       color="default"
       elevation={0}
-      sx={{ bgcolor: 'rgba(247, 247, 243, 0.9)', backdropFilter: 'blur(14px)', borderBottom: '1px solid', borderColor: 'divider' }}
+      sx={{
+        bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(7, 19, 16, 0.88)' : 'rgba(247, 247, 243, 0.9)',
+        backdropFilter: 'blur(14px)',
+        borderBottom: '1px solid',
+        borderColor: 'divider',
+      }}
     >
       <Container maxWidth="lg">
         <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 } }}>
@@ -160,6 +173,16 @@ function Navbar({
           >
             {labels.contact}
           </Button>
+          <Tooltip title={colorMode === 'dark' ? 'Use light mode' : 'Use dark mode'}>
+            <IconButton
+              aria-label={colorMode === 'dark' ? 'Use light mode' : 'Use dark mode'}
+              onClick={onColorModeChange}
+              color="inherit"
+              sx={{ ml: { xs: 0, md: 1 }, color: 'text.primary' }}
+            >
+              {colorMode === 'dark' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
+            </IconButton>
+          </Tooltip>
           <Box sx={{ ml: { xs: 0, md: 1.5 } }}>
             <LanguageBtn language={language} onLanguageChange={onLanguageChange} />
           </Box>
