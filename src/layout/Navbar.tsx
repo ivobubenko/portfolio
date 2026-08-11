@@ -82,7 +82,6 @@ function Navbar({
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Inter, sans-serif',
               fontWeight: 800,
               letterSpacing: 0,
               color: 'text.primary',
@@ -142,7 +141,6 @@ function Navbar({
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'Inter, sans-serif',
               fontWeight: 800,
               letterSpacing: 0,
               color: 'text.primary',

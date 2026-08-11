@@ -42,9 +42,8 @@ function App({ colorMode, onColorModeChange }: AppProps) {
       sx={{
         backgroundColor: 'background.default',
         backgroundImage: (theme) => theme.palette.mode === 'dark'
-          ? 'repeating-linear-gradient(90deg, rgba(99, 211, 200, 0.025) 0 1px, transparent 1px 48px), repeating-linear-gradient(0deg, rgba(99, 211, 200, 0.025) 0 1px, transparent 1px 48px), radial-gradient(circle at 50% 0, rgba(42, 119, 108, 0.18), transparent 520px)'
-          : 'repeating-linear-gradient(90deg, rgba(23, 107, 103, 0.025) 0 1px, transparent 1px 48px), repeating-linear-gradient(0deg, rgba(23, 107, 103, 0.025) 0 1px, transparent 1px 48px), linear-gradient(180deg, #eef4f1 0, #f7f7f3 420px)',
-        backgroundSize: '48px 48px, 48px 48px, auto',
+          ? 'radial-gradient(circle at 50% 0, rgba(42, 119, 108, 0.12), transparent 460px)'
+          : 'linear-gradient(180deg, #f0f5f2 0, #f7f7f3 360px)',
         minHeight: '100vh',
         transition: 'background-color 220ms ease',
       }}
@@ -67,43 +66,18 @@ function App({ colorMode, onColorModeChange }: AppProps) {
                 <Card
                   sx={{
                     height: '100%',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    borderLeft: '4px solid',
-                    borderLeftColor: 'secondary.main',
+                    borderTop: '3px solid',
+                    borderTopColor: 'secondary.main',
                     transition: 'transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease',
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      zIndex: 1,
-                      top: 14,
-                      right: 14,
-                      width: 28,
-                      height: 28,
-                      borderTop: '2px solid',
-                      borderRight: '2px solid',
-                      borderColor: 'secondary.main',
-                      opacity: 0.72,
-                    },
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      inset: 0,
-                      pointerEvents: 'none',
-                      opacity: (theme) => theme.palette.mode === 'dark' ? 0.1 : 0.055,
-                      backgroundImage: 'repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 40px), repeating-linear-gradient(0deg, currentColor 0 1px, transparent 1px 40px)',
-                      maskImage: 'linear-gradient(115deg, transparent 15%, #000 100%)',
-                    },
                     '&:hover': {
-                      transform: 'translateY(-4px)',
-                      borderColor: 'secondary.main',
+                      transform: 'translateY(-2px)',
                       boxShadow: (theme) => theme.palette.mode === 'dark'
-                        ? '0 24px 56px rgba(0, 0, 0, 0.4)'
-                        : '0 24px 56px rgba(28, 43, 39, 0.13)',
+                        ? '0 14px 32px rgba(0, 0, 0, 0.26)'
+                        : '0 14px 32px rgba(28, 43, 39, 0.09)',
                     },
                   }}
                 >
-                  <CardContent sx={{ position: 'relative', zIndex: 2, p: { xs: 2, md: 2.75 }, '&:last-child': { pb: { xs: 2, md: 2.75 } } }}>
+                  <CardContent sx={{ p: { xs: 2, md: 2.75 }, '&:last-child': { pb: { xs: 2, md: 2.75 } } }}>
                     <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                       {project.title}
                     </Typography>
@@ -171,24 +145,13 @@ function App({ colorMode, onColorModeChange }: AppProps) {
                 <Paper sx={{
                   p: { xs: 2, md: 2.5 },
                   height: '100%',
-                  position: 'relative',
-                  overflow: 'hidden',
                   transition: 'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: 72,
-                    height: 3,
-                    background: 'linear-gradient(90deg, #d35f42, transparent)',
-                  },
                   '&:hover': {
-                    transform: 'translateY(-3px)',
+                    transform: 'translateY(-2px)',
                     borderColor: 'primary.main',
                     boxShadow: (theme) => theme.palette.mode === 'dark'
-                      ? '0 18px 42px rgba(0, 0, 0, 0.3)'
-                      : '0 18px 42px rgba(28, 43, 39, 0.1)',
+                      ? '0 12px 28px rgba(0, 0, 0, 0.24)'
+                      : '0 12px 28px rgba(28, 43, 39, 0.08)',
                   },
                 }}>
                   <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>

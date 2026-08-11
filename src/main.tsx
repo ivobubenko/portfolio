@@ -1,6 +1,7 @@
 import { StrictMode, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CssBaseline, ThemeProvider } from '@mui/material'
+import '@fontsource-variable/manrope'
 import './index.css'
 import App from './App.tsx'
 import { createAppTheme, type ColorMode } from './theme.ts'

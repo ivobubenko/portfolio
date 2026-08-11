@@ -30,7 +30,7 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
             {experience.map((item, index) => (
                 <TimelineItem key={`${item.company}-${item.role}`}>
                     <TimelineSeparator>
-                        <TimelineDot sx={{ bgcolor: 'secondary.main', boxShadow: '0 0 0 5px rgba(211, 95, 66, 0.12)' }} />
+                        <TimelineDot sx={{ bgcolor: 'secondary.main', boxShadow: 'none' }} />
                         {index < experience.length - 1 && <TimelineConnector sx={{ bgcolor: 'divider', width: 2 }} />}
                     </TimelineSeparator>
                     <TimelineContent>
@@ -38,24 +38,9 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
                             p: { xs: 1.75, md: 2.25 },
                             ml: { xs: 0.5, md: 1.5 },
                             borderRadius: 1,
-                            position: 'relative',
-                            overflow: 'hidden',
-                            transition: 'border-color 180ms ease, transform 180ms ease',
-                            '&::after': {
-                                content: '""',
-                                position: 'absolute',
-                                top: 12,
-                                right: 12,
-                                width: 18,
-                                height: 18,
-                                borderTop: '1px solid',
-                                borderRight: '1px solid',
-                                borderColor: 'primary.main',
-                                opacity: 0.45,
-                            },
+                            transition: 'border-color 180ms ease, box-shadow 180ms ease',
                             '&:hover': {
                                 borderColor: 'primary.main',
-                                transform: 'translateX(3px)',
                             },
                         }}>
                             <Typography

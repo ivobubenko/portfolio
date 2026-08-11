@@ -21,18 +21,18 @@ export function createAppTheme(mode: ColorMode) {
       divider: isDark ? 'rgba(151, 196, 187, 0.18)' : '#dde3df',
     },
     typography: {
-      fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      fontFamily: '"Manrope Variable", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       fontSize: 13,
-      h3: { fontSize: '2.4rem', fontWeight: 750, letterSpacing: 0, lineHeight: 1.08 },
-      h4: { fontSize: '1.7rem', fontWeight: 750, letterSpacing: 0, lineHeight: 1.15 },
-      h5: { fontSize: '1.2rem', fontWeight: 600, letterSpacing: 0, lineHeight: 1.35 },
-      h6: { fontSize: '1.02rem', fontWeight: 700, letterSpacing: 0, lineHeight: 1.35 },
+      h3: { fontSize: '2.4rem', fontWeight: 750, letterSpacing: '-0.025em', lineHeight: 1.08 },
+      h4: { fontSize: '1.7rem', fontWeight: 750, letterSpacing: '-0.02em', lineHeight: 1.15 },
+      h5: { fontSize: '1.2rem', fontWeight: 650, letterSpacing: '-0.01em', lineHeight: 1.35 },
+      h6: { fontSize: '1.02rem', fontWeight: 700, letterSpacing: '-0.01em', lineHeight: 1.35 },
       body1: { fontSize: '0.9rem', lineHeight: 1.55 },
       body2: { fontSize: '0.8rem', lineHeight: 1.5 },
       button: { fontSize: '0.8rem', fontWeight: 700, letterSpacing: 0, textTransform: 'none' },
       overline: { fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em' },
     },
-    shape: { borderRadius: 8 },
+    shape: { borderRadius: 10 },
     components: {
       MuiCssBaseline: {
         styleOverrides: {
@@ -47,8 +47,8 @@ export function createAppTheme(mode: ColorMode) {
           contained: {
             '&:hover': {
               boxShadow: isDark
-                ? '0 8px 24px rgba(99, 211, 200, 0.2)'
-                : '0 8px 20px rgba(23, 107, 103, 0.2)',
+                ? '0 5px 14px rgba(99, 211, 200, 0.16)'
+                : '0 5px 14px rgba(23, 107, 103, 0.16)',
             },
           },
         },
@@ -59,8 +59,8 @@ export function createAppTheme(mode: ColorMode) {
           root: {
             border: `1px solid ${isDark ? 'rgba(151, 196, 187, 0.18)' : '#dde3df'}`,
             boxShadow: isDark
-              ? '0 14px 38px rgba(0, 0, 0, 0.26)'
-              : '0 12px 35px rgba(28, 43, 39, 0.06)',
+              ? '0 5px 18px rgba(0, 0, 0, 0.18)'
+              : '0 5px 18px rgba(28, 43, 39, 0.045)',
           },
         },
       },
@@ -70,8 +70,8 @@ export function createAppTheme(mode: ColorMode) {
           root: {
             border: `1px solid ${isDark ? 'rgba(151, 196, 187, 0.2)' : '#d7dfda'}`,
             boxShadow: isDark
-              ? '0 18px 46px rgba(0, 0, 0, 0.3)'
-              : '0 18px 45px rgba(28, 43, 39, 0.08)',
+              ? '0 6px 20px rgba(0, 0, 0, 0.2)'
+              : '0 6px 20px rgba(28, 43, 39, 0.055)',
           },
         },
       },
