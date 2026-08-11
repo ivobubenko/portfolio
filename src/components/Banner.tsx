@@ -20,11 +20,11 @@ function Banner({ profile, ctas }: profileInterface) {
             id="home"
             component="section"
             sx={{
-                mb: { xs: 7, md: 10 },
+                mb: { xs: 5, md: 7 },
             }}
         >
             <AnimatedBg>
-                <Stack spacing={2.5}>
+                <Stack spacing={2}>
                     <Typography variant="overline" sx={{ letterSpacing: 1.4 }}>
                         {profile.location}
                     </Typography>
@@ -34,7 +34,7 @@ function Banner({ profile, ctas }: profileInterface) {
                     <Typography variant="h5" sx={{ opacity: 0.92 }}>
                         {profile.role}
                     </Typography>
-                    <Typography sx={{ maxWidth: 780, fontSize: '1.05rem', opacity: 0.9 }}>
+                    <Typography sx={{ maxWidth: 780, fontSize: '0.92rem', opacity: 0.9 }}>
                         {profile.summary}
                     </Typography>
                     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>

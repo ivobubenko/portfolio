@@ -35,7 +35,7 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
                     </TimelineSeparator>
                     <TimelineContent>
                         <Paper sx={{
-                            p: { xs: 2.25, md: 3 },
+                            p: { xs: 1.75, md: 2.25 },
                             ml: { xs: 0.5, md: 1.5 },
                             borderRadius: 1,
                             position: 'relative',
@@ -84,7 +84,7 @@ export default function ProjectsTimeline({ experience }: ProjectsTimelineProps) 
                                 </Stack>
                             )}
                             <Divider sx={{ my: 1.5 }} />
-                            <Stack component="ul" spacing={1} sx={{ pl: 2.5, m: 0 }}>
+                                <Stack component="ul" spacing={0.75} sx={{ pl: 2.5, m: 0 }}>
                                 {item.details.map((detail) => (
                                     <Typography key={detail} component="li" color="text.secondary">
                                         {detail}

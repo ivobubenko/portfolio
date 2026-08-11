@@ -22,12 +22,15 @@ export function createAppTheme(mode: ColorMode) {
     },
     typography: {
       fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-      h3: { fontWeight: 750, letterSpacing: 0, lineHeight: 1.08 },
-      h4: { fontWeight: 750, letterSpacing: 0, lineHeight: 1.15 },
-      h5: { fontWeight: 600, letterSpacing: 0, lineHeight: 1.35 },
-      h6: { fontWeight: 700, letterSpacing: 0, lineHeight: 1.35 },
-      button: { fontWeight: 700, letterSpacing: 0, textTransform: 'none' },
-      overline: { fontWeight: 700, letterSpacing: '0.1em' },
+      fontSize: 13,
+      h3: { fontSize: '2.4rem', fontWeight: 750, letterSpacing: 0, lineHeight: 1.08 },
+      h4: { fontSize: '1.7rem', fontWeight: 750, letterSpacing: 0, lineHeight: 1.15 },
+      h5: { fontSize: '1.2rem', fontWeight: 600, letterSpacing: 0, lineHeight: 1.35 },
+      h6: { fontSize: '1.02rem', fontWeight: 700, letterSpacing: 0, lineHeight: 1.35 },
+      body1: { fontSize: '0.9rem', lineHeight: 1.55 },
+      body2: { fontSize: '0.8rem', lineHeight: 1.5 },
+      button: { fontSize: '0.8rem', fontWeight: 700, letterSpacing: 0, textTransform: 'none' },
+      overline: { fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em' },
     },
     shape: { borderRadius: 8 },
     components: {
@@ -40,7 +43,7 @@ export function createAppTheme(mode: ColorMode) {
       },
       MuiButton: {
         styleOverrides: {
-          root: { minHeight: 42, paddingInline: 18, boxShadow: 'none' },
+          root: { minHeight: 38, paddingInline: 14, boxShadow: 'none' },
           contained: {
             '&:hover': {
               boxShadow: isDark

@@ -22,7 +22,7 @@ function CustomizedChip({ sx, color = 'primary', variant = 'outlined', ...props 
                     boxShadow: theme.palette.mode === 'dark'
                         ? 'inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 14px rgba(0, 0, 0, 0.2)'
                         : 'inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 12px rgba(14, 79, 76, 0.08)',
-                    fontSize: '0.78rem',
+                    fontSize: '0.73rem',
                     fontWeight: 700,
                     letterSpacing: '0.015em',
                     transition: 'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease',
@@ -31,7 +31,7 @@ function CustomizedChip({ sx, color = 'primary', variant = 'outlined', ...props 
                     },
                     '&.MuiChip-sizeSmall': {
                         height: 28,
-                        fontSize: '0.72rem',
+                        fontSize: '0.68rem',
                         '& .MuiChip-label': {
                             px: 1.4,
                         },

@@ -73,7 +73,7 @@ function Navbar({
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 } }}>
+        <Toolbar disableGutters sx={{ minHeight: { xs: 58, md: 64 } }}>
           <Typography
             variant="h5"
             noWrap

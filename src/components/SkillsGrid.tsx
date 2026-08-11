@@ -25,7 +25,7 @@ function SkillsGrid({ skillGroups }: SkillsGridProps) {
             sx={{
                 display: 'grid',
                 gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', lg: 'repeat(3, minmax(0, 1fr))' },
-                gap: 2,
+                gap: 1.5,
             }}
         >
             {skillGroups.map((group, index) => {
@@ -38,8 +38,7 @@ function SkillsGrid({ skillGroups }: SkillsGridProps) {
                         sx={{
                             position: 'relative',
                             overflow: 'hidden',
-                            minHeight: 168,
-                            p: { xs: 2.5, md: 3 },
+                            p: { xs: 2, md: 2.25 },
                             borderRadius: 2,
                             backgroundImage: `radial-gradient(circle at 100% 0, ${accent.soft}, transparent 42%)`,
                             transition: 'transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease',
@@ -62,7 +61,7 @@ function SkillsGrid({ skillGroups }: SkillsGridProps) {
                         <Typography
                             variant="h6"
                             sx={{
-                                mb: 2,
+                                mb: 1.5,
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: 1.25,

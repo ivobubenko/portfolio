@@ -20,7 +20,7 @@ function Certifications({ certifications }: CertificationsProps) {
             sx={{
                 display: 'grid',
                 gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' },
-                gap: 2,
+                gap: 1.5,
             }}
         >
             {certifications.map((certification) => (
@@ -34,7 +34,7 @@ function Certifications({ certifications }: CertificationsProps) {
                         display: 'block',
                         position: 'relative',
                         overflow: 'hidden',
-                        p: { xs: 2.5, md: 3 },
+                        p: { xs: 2, md: 2.5 },
                         color: 'text.primary',
                         textDecoration: 'none',
                         borderRadius: 2,
@@ -68,14 +68,14 @@ function Certifications({ certifications }: CertificationsProps) {
                         },
                     }}
                 >
-                    <Stack direction="row" spacing={2} alignItems="flex-start">
+                    <Stack direction="row" spacing={1.5} alignItems="flex-start">
                         <Box
                             sx={{
                                 display: 'grid',
                                 placeItems: 'center',
                                 flex: '0 0 auto',
-                                width: 48,
-                                height: 48,
+                                width: 42,
+                                height: 42,
                                 color: 'primary.main',
                                 bgcolor: (theme) => theme.palette.mode === 'dark'
                                     ? 'rgba(99, 211, 200, 0.12)'
@@ -88,7 +88,7 @@ function Certifications({ certifications }: CertificationsProps) {
                             <Box
                                 component="span"
                                 aria-hidden="true"
-                                sx={{ fontSize: 24, fontWeight: 800, lineHeight: 1 }}
+                                sx={{ fontSize: 21, fontWeight: 800, lineHeight: 1 }}
                             >
                                 ✓
                             </Box>
