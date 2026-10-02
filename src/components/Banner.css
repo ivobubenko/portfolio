@@ -1,0 +1,54 @@
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+
+.hero-sculpture {
+  display: none;
+  place-items: center;
+  min-width: 0;
+  aspect-ratio: 1;
+  user-select: none;
+  animation: sculpture-enter 400ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.hero-sculpture img {
+  display: block;
+  width: 80%;
+  height: auto;
+  transition: transform 250ms cubic-bezier(0.2, 0, 0, 1), filter 250ms ease;
+}
+
+@media (min-width: 768px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    column-gap: 24px;
+  }
+
+  .hero-sculpture { display: grid; }
+}
+
+@media (min-width: 900px) {
+  .hero-layout { grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); column-gap: 32px; }
+  .hero-sculpture { width: calc(100% + 24px); }
+}
+
+@media (min-width: 1200px) {
+  .hero-layout { column-gap: 48px; }
+  .hero-sculpture { width: calc(100% + 48px); }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-sculpture:hover img { transform: translateY(-3px) rotate(0.35deg); }
+}
+
+@keyframes sculpture-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sculpture { animation: none; }
+  .hero-sculpture img { transition: none; transform: none; }
+}
