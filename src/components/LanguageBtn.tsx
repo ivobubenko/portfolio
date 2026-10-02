@@ -1,4 +1,4 @@
-import LanguageIcon from '@mui/icons-material/Language';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -48,9 +48,9 @@ function LanguageBtn({ language, onLanguageChange }: LanguageBtnProps) {
         aria-label="Change language"
         color="inherit"
         onClick={handleOpen}
-        startIcon={<LanguageIcon />}
-        sx={{ color: 'text.primary', minWidth: 82, borderColor: 'divider' }}
-        variant="outlined"
+        endIcon={<KeyboardArrowDownIcon sx={{ fontSize: 16 }} />}
+        sx={{ color: 'text.secondary', minWidth: 64, px: 1 }}
+        variant="text"
       >
         {selectedLanguage.shortLabel}
       </Button>
@@ -65,6 +65,8 @@ function LanguageBtn({ language, onLanguageChange }: LanguageBtnProps) {
           <MenuItem
             key={option.code}
             selected={option.code === language}
+            aria-label={option.code === 'en' ? 'English' : 'Slovenčina'}
+            lang={option.code}
             onClick={() => handleSelect(option.code)}
           >
             {option.emoji}
