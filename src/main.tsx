@@ -4,7 +4,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material'
 import '@fontsource-variable/manrope'
 import './index.css'
 import App from './App.tsx'
-import { createAppTheme, type ColorMode } from './theme.ts'
+import { colorTokens, createAppTheme, type ColorMode } from './theme.ts'
 
 function getInitialColorMode(): ColorMode {
   const savedMode = localStorage.getItem('portfolio-color-mode');
@@ -20,6 +20,7 @@ export function Root() {
   useEffect(() => {
     localStorage.setItem('portfolio-color-mode', colorMode);
     document.documentElement.style.colorScheme = colorMode;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', colorTokens[colorMode].background);
   }, [colorMode]);
 
   return (

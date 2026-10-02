@@ -66,14 +66,15 @@ function Navbar({
       color="default"
       elevation={0}
       sx={{
-        bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(7, 19, 16, 0.88)' : 'rgba(247, 247, 243, 0.9)',
-        backdropFilter: 'blur(14px)',
+        bgcolor: 'background.default',
+        backgroundImage: 'none',
+        transition: 'background-color 250ms ease, border-color 250ms ease',
         borderBottom: '1px solid',
         borderColor: 'divider',
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ minHeight: { xs: 58, md: 64 } }}>
+        <Toolbar component="nav" aria-label={language === 'sk' ? 'Hlavná navigácia' : 'Main navigation'} disableGutters sx={{ minHeight: { xs: 72, lg: 80 }, gap: 1, flexWrap: 'wrap', py: 1 }}>
           <Typography
             variant="h5"
             noWrap
@@ -81,9 +82,10 @@ function Navbar({
             href="#home"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontWeight: 800,
-              letterSpacing: 0,
+              display: { xs: 'none', lg: 'flex' },
+              fontWeight: 650,
+              fontSize: '0.8125rem',
+              letterSpacing: '0.06em',
               color: 'text.primary',
               textDecoration: 'none',
             }}
@@ -91,16 +93,17 @@ function Navbar({
             {title}
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: 'flex', lg: 'none' } }}>
             <IconButton
               size="large"
               aria-label="open navigation"
-              aria-controls="menu-appbar"
+              aria-controls={anchorElNav ? 'menu-appbar' : undefined}
+              aria-expanded={Boolean(anchorElNav)}
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <MenuIcon sx={{ fontSize: 22 }} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -116,17 +119,11 @@ function Navbar({
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
+              sx={{ display: { xs: 'block', lg: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
-                  <Typography
-                    component="a"
-                    href={page.href}
-                    sx={{ textAlign: 'center', textDecoration: 'none', color: 'inherit' }}
-                  >
-                    {page.label}
-                  </Typography>
+                <MenuItem key={page.label} component="a" href={page.href} onClick={handleCloseNavMenu}>
+                  {page.label}
                 </MenuItem>
               ))}
             </Menu>
@@ -139,10 +136,11 @@ function Navbar({
             href="#home"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'flex', lg: 'none' },
               flexGrow: 1,
-              fontWeight: 800,
-              letterSpacing: 0,
+              fontWeight: 650,
+              fontSize: '0.8125rem',
+              letterSpacing: '0.06em',
               color: 'text.primary',
               textDecoration: 'none',
             }}
@@ -150,13 +148,13 @@ function Navbar({
             {mobileTitle}
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flex: '1 1 0', minWidth: 0, flexWrap: 'wrap', justifyContent: 'center', display: { xs: 'none', lg: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page.label}
                 onClick={handleCloseNavMenu}
                 href={page.href}
-                sx={{ mx: 0.25, color: 'text.secondary', display: 'block', '&:hover': { color: 'primary.main', bgcolor: 'transparent' } }}
+                sx={{ minWidth: 0, px: 1.25, color: 'text.secondary', '&:hover': { color: 'text.primary', bgcolor: 'action.hover' } }}
               >
                 {page.label}
               </Button>
@@ -164,10 +162,10 @@ function Navbar({
           </Box>
 
           <Button
-            variant="contained"
+            variant="outlined"
             color="primary"
             href="#contact"
-            sx={{ display: { xs: 'none', md: 'inline-flex' } }}
+            sx={{ display: { xs: 'none', lg: 'inline-flex' } }}
           >
             {labels.contact}
           </Button>
@@ -176,12 +174,12 @@ function Navbar({
               aria-label={colorMode === 'dark' ? 'Use light mode' : 'Use dark mode'}
               onClick={onColorModeChange}
               color="inherit"
-              sx={{ ml: { xs: 0, md: 1 }, color: 'text.primary' }}
+              sx={{ ml: { xs: 0, lg: 1 } }}
             >
-              {colorMode === 'dark' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
+              {colorMode === 'dark' ? <LightModeOutlinedIcon sx={{ fontSize: 20 }} /> : <DarkModeOutlinedIcon sx={{ fontSize: 20 }} />}
             </IconButton>
           </Tooltip>
-          <Box sx={{ ml: { xs: 0, md: 1.5 } }}>
+          <Box>
             <LanguageBtn language={language} onLanguageChange={onLanguageChange} />
           </Box>
         </Toolbar>
