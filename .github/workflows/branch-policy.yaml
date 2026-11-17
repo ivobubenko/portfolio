@@ -1,0 +1,30 @@
+
+name: Branch Policy
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+
+jobs:
+  enforce-dev-to-main:
+    name: Enforce dev to main
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate source branch
+        env:
+          SOURCE_BRANCH: ${{ github.head_ref }}
+          SOURCE_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          TARGET_REPO: ${{ github.repository }}
+        run: |
+          if [[ "$SOURCE_BRANCH" != "dev" || "$SOURCE_REPO" != "$TARGET_REPO" ]]; then
+            echo "::error::Only PRs from this repository's dev branch can target main."
+            exit 1
+          fi
+
+          echo "Valid PR: dev -> main"
