@@ -1,8 +1,8 @@
-# Portfolio
+# 💼 Portfolio
 
 Personal portfolio built with React, TypeScript, and Vite. The site is served through CloudFront from a private S3 bucket; AWS CloudFormation manages the infrastructure.
 
-## Local development
+## 🛠️ Local development
 
 Install dependencies and start the Vite development server:
 
@@ -13,7 +13,7 @@ npm run dev
 
 Before opening a pull request, check the code with `npm run lint` and `npm run build`.
 
-## Repository structure
+## 🗂️ Repository structure
 
 | Path                             | What lives there                                    |
 | -------------------------------- | --------------------------------------------------- |
@@ -24,12 +24,12 @@ Before opening a pull request, check the code with `npm run lint` and `npm run b
 | `cloud_infrastructure/`          | CloudFormation template shared by both environments |
 | `.github/workflows/`             | Code checks and deployment workflows                |
 
-## Environments and deployment
+## 🚀 Environments and deployment
 
 | Branch | GitHub environment | Site                                                      |
 | ------ | ------------------ | --------------------------------------------------------- |
-| `dev`  | `dev`              | [Development site](https://d2yqc7kwqij02v.cloudfront.net) |
-| `main` | `prod`             | [Production site](https://d1iow15lsokf9h.cloudfront.net)  |
+| `dev`  | `dev`              | [🧪 Development site](https://d2yqc7kwqij02v.cloudfront.net) |
+| `main` | `prod`             | [🌐 Production site](https://d1iow15lsokf9h.cloudfront.net)  |
 
 Both environments use the same app code and CloudFormation template. Configure separate AWS roles, stack names, domains, and certificates in their GitHub environments.
 
